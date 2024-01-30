@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-gradient-vertical {
+    background: linear-gradient(to bottom, rgba(255, 181, 61, 1) 0%, rgba(255, 67, 170, 1) 100%);
+  }
+}
