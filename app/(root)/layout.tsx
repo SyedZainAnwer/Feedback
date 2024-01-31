@@ -24,7 +24,9 @@ export default function RootLayout({
           <section className="w-1/4">
             <LeftSideBar />
           </section>
-          {children}
+          <section className="w-1/2">
+            {children}
+          </section>
         </main>
       </body>
     </html>
