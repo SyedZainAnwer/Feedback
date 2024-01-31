@@ -17,11 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en"> 
       <body className={inter.className}>
         <Navbar />
-        <main className="flex">
-          <LeftSideBar />
+        <main className="flex flex-row">
+          <section className="w-1/4">
+            <LeftSideBar />
+          </section>
           {children}
         </main>
       </body>
