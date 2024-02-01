@@ -7,9 +7,10 @@ interface Props {
     onChange?: ChangeEventHandler<HTMLInputElement>;
     dataItems?: string[];
     className?: string;
+    name?: string
 }
 
-const Input = ({ inputType, placeholder, value, onChange, dataItems, className }: Props) => {
+const Input = ({ inputType, placeholder, value, onChange, dataItems, className, name }: Props) => {
     return (
         <div>
             <input 
@@ -19,6 +20,7 @@ const Input = ({ inputType, placeholder, value, onChange, dataItems, className }
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                name={name}
             />
             {dataItems && (
                 dataItems.map((item, index) => (

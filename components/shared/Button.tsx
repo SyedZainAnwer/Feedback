@@ -4,11 +4,12 @@ import Image from 'next/image';
 interface Props {
     title: string;
     icon?: string;
+    className: string;
 }
 
-const Button = ({ title, icon }: Props) => {
+const Button = ({ title, icon, className }: Props) => {
     return (
-        <div className='flex bg-light_blue p-3 rounded-md'>
+        <div className={`${className} flex p-3 rounded-md`}>
             {icon &&   
             <Image 
                 src={icon ?? icon}
