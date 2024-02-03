@@ -19,7 +19,7 @@ const Button = ({ title, icon, className }: Props) => {
                 className={icon ? 'block': 'hidden'}
             />
             }
-            <button className='ml-1'>{title}</button>
+            <button className={`${icon ? 'ml-1' : ''} flex justify-center w-full`}>{title}</button>
         </div>
     )
 }

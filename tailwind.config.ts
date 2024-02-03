@@ -15,9 +15,11 @@ const config: Config = {
           'gradient_color': 'linear-gradient(90deg, rgba(255,181,61,1) 0%, rgba(255,67,170,1) 61%, rgba(76,215,251,1) 100%)'
       },
       colors: {
-        orange: "#FCA311",
+        orange: "#FF6347",
         light_blue: "#00BFEF",
         pink: "#FF30C2",
+        yellow: '#FFF700',
+        purple: '#8A2BE2',
         white: "#ffffff",
         light_gray: '#D9D9D9',
         black: '#000000',

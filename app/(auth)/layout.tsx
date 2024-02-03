@@ -15,10 +15,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <html lang="en">
             <body className={inter.className}>
                 <div className="flex flex-row w-full">
-                    <section className="w-1/2">
+                    <section className="w-full md:w-1/2">
                         {children}
                     </section>
-                    <section className="w-1/2">
+                    <section className="w-1/2 md:block hidden">
                         <AuthRightSideBar />
                     </section>
                 </div>

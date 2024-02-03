@@ -7,12 +7,14 @@ interface Props {
     onChange?: ChangeEventHandler<HTMLInputElement>;
     dataItems?: string[];
     className?: string;
-    name?: string
+    name?: string;
+    title?: string;
 }
 
-const Input = ({ inputType, placeholder, value, onChange, dataItems, className, name }: Props) => {
+const Input = ({ inputType, placeholder, value, onChange, dataItems, className, name, title }: Props) => {
     return (
         <div>
+            <p className="mb-1">{title}</p>
             <input 
                 list={dataItems && 'list'}
                 type={inputType}

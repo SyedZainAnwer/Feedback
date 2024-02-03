@@ -8,6 +8,53 @@
   box-sizing: border-box;
 }
 
+.dynamic_txt {
+  margin-left: 10px;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.dynamic_txt li {
+  list-style: none;
+  color: black;
+  position: relative;
+  top: 0;
+  animation: slide 9s steps(3) infinite;
+}
+
+@keyframes slide {
+  100% {
+    top: -72px;
+  }
+}
+
+.dynamic_txt li span {
+  position: relative;
+  color: white;
+}
+
+.dynamic_txt li span::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: #8A2BE2;
+  border-left: 2px solid white;
+  animation: typing 3s steps(10) infinite;
+}
+
+@keyframes typing {
+  30%, 45%{
+    left: calc(100% + 30px);
+  }
+  69%{
+    left: 0;
+  }
+}
+
+
 @layer utilities {
   .bg-gradient-vertical {
     background: linear-gradient(to bottom, rgba(255, 181, 61, 1) 0%, rgba(255, 67, 170, 1) 100%);
