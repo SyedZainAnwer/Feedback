@@ -29,7 +29,7 @@ const RegisterForm = ({ user }: Props) => {
         }))
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e: any) => {
         e.preventDefault()
 
         if(
@@ -38,11 +38,15 @@ const RegisterForm = ({ user }: Props) => {
             !registerFieldValue.confirmPassword
         ) return console.error("Fill all the values")
 
-        if(registerFieldValue.password !== registerFieldValue.confirmPassword) return console.log("Enter same password")
-        console.log(registerFieldValue)
+        if(registerFieldValue.password !== registerFieldValue.confirmPassword) {
+            return console.log("Enter same password");
+        }
 
         try {
-            const res = await fetch('api/register', {
+
+            UserValidation.parse(registerFieldValue);
+
+            const res = await fetch('api/register/', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -50,7 +54,9 @@ const RegisterForm = ({ user }: Props) => {
                 body: JSON.stringify(registerFieldValue)
             });
             if(res.ok){
-                setRegisterFieldValue({email: "", confirmPassword: "", password: ""})
+                // setRegisterFieldValue({email: "", confirmPassword: "", password: ""})
+                const form = e.target;
+                form.reset();
                 console.log("user registered")
             } else {
                 console.error("Something went wrong!")

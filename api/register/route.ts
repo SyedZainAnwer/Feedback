@@ -1,6 +1,7 @@
 import User from "@/lib/models/user.model";
 import { connectToDB } from "@/lib/mongoose";
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
 
 export const POST = async(req: Request) => {
     try {
@@ -10,10 +11,14 @@ export const POST = async(req: Request) => {
         const exist = await User.findOne({$or: [{email}, {id}]});
         if(exist) return NextResponse.json({message: "This email already exist"}, {status: 500});
 
-        if(password === confirmPassword) {
-            await User.create({email, password, id})
-            return NextResponse.json({message: "User registered"}, {status: 201});
+        if (password !== confirmPassword) {
+            return NextResponse.json({error: "Passwords do not match"}, {status: 400})
         }
+
+        const hashPassword = await bcrypt.hash(password, 10);
+
+        await User.create({email, password: hashPassword, id});
+        return NextResponse.json({ message: "User registered" }, { status: 201 });
 
     } catch(error: any) {
         console.log(`Error while registering the user: ${error.message}`);
