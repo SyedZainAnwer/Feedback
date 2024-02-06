@@ -1,33 +1,66 @@
 "use server"
 
-import { NextResponse } from "next/server";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import bcrypt from 'bcrypt';
 
-export const registerUser = async(formData: FormData) => {
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const confirmPassword = formData.get("confirmPassword");
+interface Params {
+    email: string;
+    password: string;
+    confirmPassword?: string;
+}
 
+export const registerUser = async({ email, password, confirmPassword }: Params) => {
     try {
         connectToDB();
 
-        // const { email, password, confirmPassword, id } = await formData.get;
-        const exist = await User.findOne({$or: [{email}, {id}]});
-        if(exist) return NextResponse.json({message: "This email already exist"}, {status: 500});
+        const exist = await User.findOne({ email });
+        if (exist) {
+            return {
+                status: 500,
+                body: { message: "This email already exists" }
+            };
+        }
 
         if (password !== confirmPassword) {
-            return NextResponse.json({error: "Passwords do not match"}, {status: 400})
+            return {
+                status: 400,
+                body: { error: "Passwords do not match" }
+            };
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
 
-        await User.create({email, password: hashPassword, id});
-        return NextResponse.json({ message: "User registered" }, { status: 201 });
+        await User.create({ email, password: hashPassword });
 
-    } catch(error: any) {
+        return {
+            status: 201,
+            body: { message: "User registered" }
+        };
+
+    } catch (error: any) {
         console.log(`Error while registering the user: ${error.message}`);
-        return NextResponse.json({message: "Error occurred while registering"}, {status: 500})
+        return {
+            status: 500,
+            body: { message: "Error occurred while registering" }
+        };
+    }
+};
+
+export const loginUser = async({ email, password }: Params) => {
+    try {
+        connectToDB();
+
+        const user = await User.findOne({ email });
+
+        if(!user) return false;
+
+        const valid = await bcrypt.compare(password, user.password);
+
+        if(!valid) return false;
+
+        return true;
+    } catch(error: any) {
+        throw new Error(`Error logging user: ${error.message}`)
     }
 }

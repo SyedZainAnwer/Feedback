@@ -5,6 +5,8 @@ import Button from "../shared/Button";
 import Input from "../shared/Input";
 import * as z from 'zod';
 import { UserValidation } from "@/lib/validations/user";
+import { registerUser } from "@/lib/actions/user.actions";
+import { useRouter } from "next/navigation";
 
 interface Props {
     user: {
@@ -14,6 +16,8 @@ interface Props {
 }
 
 const RegisterForm = ({ user }: Props) => {
+
+    const router = useRouter()
 
     const [registerFieldValue, setRegisterFieldValue] = useState<z.infer<typeof UserValidation>>({
         email: "",
@@ -29,41 +33,16 @@ const RegisterForm = ({ user }: Props) => {
         }))
     }
 
-    const handleSubmit = async(e: any) => {
-        e.preventDefault()
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        
+        await registerUser({
+            email: registerFieldValue.email,
+            password: registerFieldValue.password,
+            confirmPassword: registerFieldValue.confirmPassword || ""
+        });
 
-        if(
-            !registerFieldValue.email || 
-            !registerFieldValue.password || 
-            !registerFieldValue.confirmPassword
-        ) return console.error("Fill all the values")
-
-        if(registerFieldValue.password !== registerFieldValue.confirmPassword) {
-            return console.log("Enter same password");
-        }
-
-        try {
-
-            UserValidation.parse(registerFieldValue);
-
-            const res = await fetch('api/register/', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(registerFieldValue)
-            });
-            if(res.ok){
-                // setRegisterFieldValue({email: "", confirmPassword: "", password: ""})
-                const form = e.target;
-                form.reset();
-                console.log("user registered")
-            } else {
-                console.error("Something went wrong!")
-            }
-        } catch(error: any) {
-            throw new Error(`Cannot register new user: ${error.message}`)
-        }
+        router.push("/login");
     }
 
     return (
@@ -95,7 +74,6 @@ const RegisterForm = ({ user }: Props) => {
                 <Button 
                     className="bg-light_blue mt-2" 
                     title="Register"
-                    // handleSubmit={handleSubmit}
                 />
             </form>
                 <p className="mt-5 text-center text-sm">
