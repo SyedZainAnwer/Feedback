@@ -7,14 +7,17 @@ let isConnected = false;
 export const connectToDB = async() => {
 
     mongoose.set('strictQuery', true);
-    if(!process.env.MONGODB_URI) return console.log("MONGODB_URI not found!")
-    if(isConnected) return console.log("Already connected to MONGODB")
+    if(!process.env.MONGODB_URI) return console.log("MONGODB_URI not found!");
+    if(isConnected) return console.log("Already connected to MongoDB");
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(process.env.MONGODB_URI, {
+            maxPoolSize: 1,
+            minPoolSize: 1,
+        });
         isConnected = true;
-        console.log("Connected to MongoDB")
+        console.log("Connected to MongoDB");
     } catch(error) {
-        console.log(error)
+        console.log(error);
     }
 }

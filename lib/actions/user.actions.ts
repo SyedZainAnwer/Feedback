@@ -12,8 +12,6 @@ interface Params {
 
 export const registerUser = async({ email, password, confirmPassword }: Params) => {
     try {
-        connectToDB();
-
         const exist = await User.findOne({ email });
         if (exist) {
             return {
@@ -49,8 +47,6 @@ export const registerUser = async({ email, password, confirmPassword }: Params) 
 
 export const loginUser = async({ email, password }: Params) => {
     try {
-        connectToDB();
-
         const user = await User.findOne({ email });
 
         if(!user) return false;
@@ -63,4 +59,4 @@ export const loginUser = async({ email, password }: Params) => {
     } catch(error: any) {
         throw new Error(`Error logging user: ${error.message}`)
     }
-}
+};
