@@ -19,6 +19,7 @@ const LoginForm = () => {
         password: "",
         confirmPassword: null
     });
+    const [isAccurateData, setIsAccurateData] = useState(true);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -28,20 +29,23 @@ const LoginForm = () => {
         }))
     };
 
-    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const validInfo = await loginUser({
-            email: loginFormValues.email,
-            password: loginFormValues.password
-        })
+        const { email, password } = loginFormValues;
 
-        if(validInfo) {
-            router.push("/");
-        } else {
-            console.log("Failed to login")
+        if(!email || !password) {
+            setIsAccurateData(false);
+            return;
         }
 
+        const validInfo = await loginUser({ email, password })
+
+        if (validInfo) {
+            router.push("/");
+        } else {
+            setIsAccurateData(false);
+        }
     }
 
     return (
@@ -51,6 +55,7 @@ const LoginForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Input
                         inputType="email"
+                        className={`mb-5 ${!isAccurateData ? "border-red-500" : ""}`}
                         title="Email"
                         name="email"
                         value={loginFormValues.email}
@@ -58,15 +63,18 @@ const LoginForm = () => {
                     />
                     <Input
                         inputType="password"
+                        className={`mb-1 ${!isAccurateData ? "border-red-500" : ""}`}
                         title="Password"
                         name="password"
                         value={loginFormValues.password}
                         onChange={(e) => handleChange(e)}
                     />
+                    {!isAccurateData && (
+                        <p className="text-sm text-red-700 mb-2">Enter correct details</p>
+                    )}
                     <Button
-                        className="bg-light_blue mt-2"
+                        className="bg-light_blue mt-7"
                         title="Login"
-                        // handleSubmit={handleSubmit}
                     />
                 </form>
                 <p className="mt-5 text-center text-sm">

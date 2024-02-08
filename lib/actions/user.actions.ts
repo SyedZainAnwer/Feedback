@@ -57,6 +57,6 @@ export const loginUser = async({ email, password }: Params) => {
 
         return true;
     } catch(error: any) {
-        throw new Error(`Error logging user: ${error.message}`)
+        console.log(`Error logging user: ${error.message}`)
     }
 };

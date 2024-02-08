@@ -18,7 +18,7 @@ const Input = ({ inputType, placeholder, value, onChange, dataItems, className, 
             <input 
                 list={dataItems && 'list'}
                 type={inputType}
-                className={`${className} border border-light_gray p-2 rounded-sm mb-5`}
+                className={`${className} border border-light_gray p-2 rounded-sm`}
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
