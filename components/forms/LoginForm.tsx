@@ -29,9 +29,7 @@ const LoginForm = () => {
         }))
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         const { email, password } = loginFormValues;
 
         if(!email || !password) {
@@ -52,7 +50,7 @@ const LoginForm = () => {
         <div className="flex justify-center items-center h-screen">
             <div className="shadow-lg px-10 py-16 rounded-lg">
                 <p className="block md:hidden text-center text-3xl font-bold text-orange mb-8">Feedback</p>
-                <form onSubmit={handleSubmit}>
+                <form action={handleSubmit}>
                     <Input
                         inputType="email"
                         className={`mb-5 ${!isAccurateData ? "border-red-500" : ""}`}
