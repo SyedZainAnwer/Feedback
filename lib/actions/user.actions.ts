@@ -4,6 +4,8 @@ import { ILogin } from "@/types/appTypes";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 export const registerUser = async({ email, password, confirmPassword }: ILogin) => {
     try {
@@ -41,6 +43,7 @@ export const registerUser = async({ email, password, confirmPassword }: ILogin) 
     }
 };
 
+
 export const loginUser = async({ email, password }: ILogin) => {
     try {
         connectToDB();
@@ -49,12 +52,14 @@ export const loginUser = async({ email, password }: ILogin) => {
 
         if(!user) return false;
 
-        const valid = await bcrypt.compare(password, user.password);
+        const validPassword = await bcrypt.compare(password, user.password);
+        if(!validPassword) return false;
 
-        if(!valid) return false;
+        if(!process.env.JWT_SECRET) return false;
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
-        return true;
+        return {token};
     } catch(error: any) {
-        console.log(`Error logging user: ${error.message}`)
+        console.log(`Error logging user: ${error.message}`);
     }
 };

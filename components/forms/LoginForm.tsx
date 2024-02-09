@@ -1,9 +1,12 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import * as z from "zod";
+import Cookies from "js-cookie";
+import jwt from "jsonwebtoken";
+
 import { UserValidation } from "@/lib/validations/user";
 import { loginUser } from "@/lib/actions/user.actions";
 
@@ -37,15 +40,17 @@ const LoginForm = () => {
             return;
         }
 
-        const validInfo = await loginUser({ email, password })
-
-        // const { token } = await validInfo;
-        // document.cookie = `token=${token}; path=/`
-
-        if (validInfo) {
-            router.push("/");
-        } else {
-            setIsAccurateData(false);
+        try {
+            const response = await loginUser({ email, password })
+            if(response) {
+                // setAuthToken(response.token);
+                Cookies.set("authToken", response.token);
+                router.push("/")
+            } else {
+                console.error("Failed to Login: Invalid response")
+            }
+        } catch(error: any) {
+            console.error(`Failed to login: ${error.message}`)
         }
     }
 

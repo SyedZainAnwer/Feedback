@@ -8,10 +8,10 @@ interface Props {
     title: string;
     icon?: string;
     className: string;
-    handleSubmit?: () => void
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button = ({ title, icon, className, handleSubmit }: Props) => {
+const Button = ({ title, icon, className, onClick }: Props) => {
 
     const { pending } = useFormStatus();
 
@@ -35,7 +35,7 @@ const Button = ({ title, icon, className, handleSubmit }: Props) => {
                 )}
                 <button 
                     className={`${icon ? 'ml-1' : ''} flex justify-center w-full`}
-                    onClick={handleSubmit}
+                    onClick={onClick}
                 >
                     {title}
                 </button>
