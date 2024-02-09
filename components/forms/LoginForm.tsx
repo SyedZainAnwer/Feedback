@@ -39,6 +39,9 @@ const LoginForm = () => {
 
         const validInfo = await loginUser({ email, password })
 
+        // const { token } = await validInfo;
+        // document.cookie = `token=${token}; path=/`
+
         if (validInfo) {
             router.push("/");
         } else {

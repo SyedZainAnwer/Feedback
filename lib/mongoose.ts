@@ -11,10 +11,7 @@ export const connectToDB = async() => {
     if(isConnected) return console.log("Already connected to MongoDB");
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
-            maxPoolSize: 100,
-            minPoolSize: 10,
-        });
+        await mongoose.connect(process.env.MONGODB_URI);
         isConnected = true;
         console.log("Connected to MongoDB");
     } catch(error) {

@@ -1,16 +1,11 @@
 "use server"
 
+import { ILogin } from "@/types/appTypes";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import bcrypt from 'bcrypt';
 
-interface Params {
-    email: string;
-    password: string;
-    confirmPassword?: string;
-}
-
-export const registerUser = async({ email, password, confirmPassword }: Params) => {
+export const registerUser = async({ email, password, confirmPassword }: ILogin) => {
     try {
         connectToDB();
         const exist = await User.findOne({ email });
@@ -46,7 +41,7 @@ export const registerUser = async({ email, password, confirmPassword }: Params) 
     }
 };
 
-export const loginUser = async({ email, password }: Params) => {
+export const loginUser = async({ email, password }: ILogin) => {
     try {
         connectToDB();
 
