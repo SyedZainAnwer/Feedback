@@ -5,7 +5,6 @@ import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
-import { NextResponse } from "next/server";
 
 export const registerUser = async({ email, password, confirmPassword }: ILogin) => {
     try {
@@ -57,8 +56,9 @@ export const loginUser = async({ email, password }: ILogin) => {
 
         if(!process.env.JWT_SECRET) return false;
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        const userId = user._id.toString();
 
-        return {token};
+        return {token, userId};
     } catch(error: any) {
         console.log(`Error logging user: ${error.message}`);
     }

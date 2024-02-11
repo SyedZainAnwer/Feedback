@@ -1,22 +1,31 @@
 "use server"
 
-import { IPost } from "@/types/appTypes"
-import { connectToDB } from "../mongoose"
-import Post from "../models/post.model"
+import { connectToDB } from "../mongoose";
+import { IPost } from "@/types/appTypes";
+import Post from "../models/post.model";
+import User from "../models/user.model";
+import { revalidatePath } from "next/cache";
+import mongoose from "mongoose";
 
-export const createPost = async({ post, topic, postId }: IPost) => {
+export const createPost = async({ text, topic, authorId, path }: IPost) => {
     try {
-        connectToDB()
+        connectToDB();
 
         const createdPost = await Post.create({
-            post,
-            postId,
-            topic
+            text,
+            author: authorId,
+            topics: [topic]
         });
+
+        await User.findByIdAndUpdate(authorId, {
+            $push: { posts: createdPost._id }
+        });
+
+        console.log(createdPost, "createdPost")
 
         return createdPost;
 
     } catch(error: any) {
-        throw new Error(`Error creating post: ${error}`)
+        console.error(`Error creating post: ${error.message}`)
     }
 }

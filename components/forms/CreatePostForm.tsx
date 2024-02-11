@@ -3,56 +3,78 @@
 import Button from "@/components/shared/Button";
 import Heading from "@/components/shared/Heading";
 import Input from "@/components/shared/Input";
-import { useForm, Form } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod";
-import { PostValidation } from "@/lib/validations/post";
 import { createPost } from "@/lib/actions/post.actions";
+import { PostValidation } from "@/lib/validations/post";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 const data = ["data1", "data2", "data3", "data4"]
 
-const CreatePostForm = ({ userId }: { userId?: string }) => {
+const CreatePostForm = ({ userId }: { userId: string }) => {
 
-    const form = useForm({
-        resolver: zodResolver(PostValidation),
-        defaultValues: {
-            post: '',
-            accountId: userId,
-        },
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const [postValues, setPostValues] = useState({
+        text: "",
+        topic: "",
+        authorId: userId,
     });
 
-    // const handleSubmit = async() => {
-    //     await createPost({
-    //         post: "post" || "",
-    //         postId: post.id,
-    //         topic: topic
-    //     })
-    // }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setPostValues((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+    
+    const handlePostSubmit = async() => {
+        try {
+            PostValidation.parse(postValues);
+
+            const response = await createPost({
+                text: postValues.text,
+                topic: postValues.topic,
+                authorId: postValues.authorId,
+                path: pathname
+            })
+
+            console.log(response, "create post response")
+            router.push("/");
+
+        } catch(error: any) {
+            console.error(`Cannot create post: ${error.message}`)
+        }
+    }
 
     return (
         <main className="">
             <Heading title="Post Feedback" />
-            <Form {...form}>
-                <form className="mt-4">
+                <form className="mt-4" action={handlePostSubmit}>
                     <Input
                         inputType="text"
-                        className="w-full py-3"
+                        className="w-full py-3 mb-2"
                         dataItems={data}
                         placeholder="Select a topic or enter one"
                         name="topic"
+                        value={postValues.topic}
+                        onChange={(e) => handleChange(e)}
                     />
                     <Input
                         inputType="text"
-                        className="w-full py-3"
+                        className="w-full py-3 mb-2"
                         placeholder="Enter post title"
-                        name="post"
+                        name="text"
+                        value={postValues.text}
+                        onChange={(e) => handleChange(e)}
                     />
 
                     <div className="flex justify-end">
-                        {/* <Button title="Cancel" className="bg-light_gray mr-2"/> */}
                         <Button title="Submit" className="bg-light_blue" />
                     </div>
                 </form>
-            </Form>
+                        <Button title="Cancel" className="bg-light_gray mr-2" onClick={() => router.back()}/>
         </main>
     )
 }

@@ -43,8 +43,8 @@ const LoginForm = () => {
         try {
             const response = await loginUser({ email, password })
             if(response) {
-                // setAuthToken(response.token);
                 Cookies.set("authToken", response.token);
+                Cookies.set("authUserId", response.userId)
                 router.push("/")
             } else {
                 console.error("Failed to Login: Invalid response")
