@@ -17,7 +17,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
 
     const [postValues, setPostValues] = useState({
         text: "",
-        topic: "",
+        topic: [],
         authorId: userId,
     });
 
@@ -35,7 +35,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
 
             const response = await createPost({
                 text: postValues.text,
-                topic: postValues.topic,
+                topic: postValues.topic[],
                 authorId: postValues.authorId,
                 path: pathname
             })
@@ -74,7 +74,6 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                         <Button title="Submit" className="bg-light_blue" />
                     </div>
                 </form>
-                        <Button title="Cancel" className="bg-light_gray mr-2" onClick={() => router.back()}/>
         </main>
     )
 }

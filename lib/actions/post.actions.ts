@@ -4,8 +4,6 @@ import { connectToDB } from "../mongoose";
 import { IPost } from "@/types/appTypes";
 import Post from "../models/post.model";
 import User from "../models/user.model";
-import { revalidatePath } from "next/cache";
-import mongoose from "mongoose";
 
 export const createPost = async({ text, topic, authorId, path }: IPost) => {
     try {
@@ -14,7 +12,7 @@ export const createPost = async({ text, topic, authorId, path }: IPost) => {
         const createdPost = await Post.create({
             text,
             author: authorId,
-            topics: [topic]
+            topics: Array.isArray(topic) ? topic : [topic], 
         });
 
         await User.findByIdAndUpdate(authorId, {
