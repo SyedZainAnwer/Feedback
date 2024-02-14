@@ -3,23 +3,30 @@
 import Button from "@/components/shared/Button";
 import Heading from "@/components/shared/Heading";
 import Input from "@/components/shared/Input";
-import { createPost } from "@/lib/actions/post.actions";
+import { createPost, fetchTopics } from "@/lib/actions/post.actions";
 import { PostValidation } from "@/lib/validations/post";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
-
-const data = ["data1", "data2", "data3", "data4"]
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const CreatePostForm = ({ userId }: { userId: string }) => {
 
     const router = useRouter();
-    const pathname = usePathname();
+    const [ topics, setTopics ] = useState<string[] | undefined>([]);
 
     const [postValues, setPostValues] = useState({
         text: "",
-        topic: [],
+        topic: "",
         authorId: userId,
     });
+
+    useEffect(() => {
+        const topics = async() => {
+            const res = await fetchTopics();
+            setTopics(res)
+        };
+
+        topics()
+    }, [])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -35,9 +42,8 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
 
             const response = await createPost({
                 text: postValues.text,
-                topic: postValues.topic[],
-                authorId: postValues.authorId,
-                path: pathname
+                topic: postValues.topic,
+                authorId: postValues.authorId
             })
 
             console.log(response, "create post response")
@@ -55,7 +61,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                     <Input
                         inputType="text"
                         className="w-full py-3 mb-2"
-                        dataItems={data}
+                        dataItems={topics}
                         placeholder="Select a topic or enter one"
                         name="topic"
                         value={postValues.topic}
