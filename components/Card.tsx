@@ -13,7 +13,7 @@ const Card = ({ topic, postTitle, createdAt }:Props) => {
             <div className="flex justify-between">
                 <div className="flex">
                     <HeadingIndicator className="h-5"/>
-                    <h5 className="text-pink flex items-center text-sm">{topic}</h5>
+                    <h5 className="text-pink flex text-sm">{topic}</h5>
                 </div>
                 <p>{createdAt} ago</p>
             </div>

@@ -20,11 +20,11 @@ export default function RootLayout({
     <html lang="en"> 
       <body className={inter.className}>
         <Navbar />
-        <main className="flex flex-row">
-          <section className="w-1/4">
+        <main className="flex">
+          <section className="w-1/4 lg:block hidden">
             <LeftSideBar />
           </section>
-          <section className="w-1/2">
+          <section className="lg:w-1/2 w-full px-4">
             {children}
           </section>
         </main>

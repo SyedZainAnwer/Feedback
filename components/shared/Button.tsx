@@ -21,7 +21,6 @@ const Button = ({ title, icon, className, onClick }: Props) => {
                 <div className='w-full flex justify-center items-center'>
                     <Image src={loader} width={25} height={25} alt='loader' />
                 </div>
-                // <p>Loading...</p>
             ) : (
                 <>
                 {icon && (
