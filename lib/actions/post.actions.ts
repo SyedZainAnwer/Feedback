@@ -60,26 +60,7 @@ export const fetchPosts = async() => {
 export const fetchTopics = async() => {
     try{
         connectToDB();
-        const dataItems = await Topic.aggregate([
-            {
-                $lookup: {
-                    from: 'posts',
-                    localField: 'posts',
-                    foreignField: '_id',
-                    as: 'posts'
-                }
-            },
-            {
-                $project: {
-                    name: 1,
-                    postCount: { $size: "$posts" }
-                }
-            },
-            {
-                $sort: { postCount: -1 } // Sort topics by postCount in descending order
-            }
-        ]);
-        
+        const dataItems = await Topic.find();  
 
         const topicName: string[] = dataItems.map(topic => topic.name );
 
