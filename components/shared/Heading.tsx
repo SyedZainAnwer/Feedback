@@ -1,10 +1,11 @@
 interface Props {
-    title: string
+    title: string;
+    className?: string
 }
 
-const Heading = ({ title }: Props) => {
+const Heading = ({ title, className }: Props) => {
     return(
-        <h1 className="md:text-lg font-bold uppercase text-black flex items-center">{title}</h1>
+        <h1 className={`${className} md:text-lg font-bold uppercase text-black flex items-center`}>{title}</h1>
     )
 }
 

@@ -40,8 +40,9 @@ export default function Home() {
       <div className="md:hidden block mb-5">
         <SearchInput />
       </div>
-      <div className="flex justify-between mb-4">
-        <Heading title="Give your feedback" />
+      <div className="flex md:justify-between justify-end mb-4">
+          <Heading title="Give your feedback" className="hidden"/>
+          <Button className="block md:hidden bg-light_blue mr-2 text-white" title="Browse Topics"/>
         <Button
           title="Create Post"
           icon={plusIcon}
