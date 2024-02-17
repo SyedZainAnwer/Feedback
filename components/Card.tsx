@@ -17,7 +17,7 @@ const Card = ({ topic, postTitle, createdAt }:Props) => {
                 </div>
                 <p>{createdAt} ago</p>
             </div>
-            <p className="mt-2 text-xl font-semibold">{postTitle}.</p>
+            <p className="mt-2 text-xl font-semibold">{postTitle}</p>
             <PostInteraction />
         </div>
     )
