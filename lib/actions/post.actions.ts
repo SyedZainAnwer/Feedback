@@ -47,13 +47,44 @@ export const fetchPosts = async() => {
         const posts = await Post.find({ parentId: {$in: [null, undefined]} })
         .sort({ createdAt: "desc" });
 
-        // const postId = await 
-
         return { posts: posts || [] };
 
     } catch(error: any) {
         console.log(`Error fetching post: ${error.message}`);
         return { posts: [] };
+    }
+}
+
+export const fetchPostById = async(postId: string) => {
+    connectToDB();
+    try{
+
+        const post = await Post.findById(postId)
+        .populate({
+            path: "author",
+            model: User,
+            select: "_id id"
+        })
+        .populate({
+            path: "children",
+            populate: [
+                {
+                    path: "author",
+                    model: User,
+                    select: "_id id parentId"
+                },
+                {
+                    path: "children",
+                    model: Post,
+                    select: "_id id parentId"
+                }
+            ]
+        }).exec();
+
+        return post;
+
+    } catch(error: any) {
+        console.error(`Error while fetching post: ${error.message};`);
     }
 }
 

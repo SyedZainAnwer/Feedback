@@ -1,7 +1,8 @@
 export interface IPost {
     topic: string;
-    authorId: string;
+    authorId?: string;
     text: string;
+    createdAt?: string;
 }
 
 export interface ILogin {

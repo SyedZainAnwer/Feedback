@@ -23,7 +23,7 @@ export default function Home() {
       try {
         setLoading(true)
         const { posts: fetchedPosts } = await fetchPosts();
-        setPosts(fetchedPosts)
+        setPosts(fetchedPosts);
       } catch (error: any) {
         setLoading(false)
         console.log(`Cannot fetch posts: ${error.message}`)
@@ -57,9 +57,10 @@ export default function Home() {
       <div className="grid md:grid-cols-2 gap-4 mb-5">
         {posts.map((post, index) => (
           <Card
+            key={index}
             topic={post.topic}
-            postTitle={post.text}
-            createdAt="5days"
+            text={post.text}
+            createdAt={post.createdAt}
           />
         ))}
       </div>
