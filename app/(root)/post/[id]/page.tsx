@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Input from "@/components/shared/Input";
 import { fetchPostById } from "@/lib/actions/post.actions";
 
 const Page = async({ params }: {params: {id: string}}) => {
@@ -13,6 +14,13 @@ const Page = async({ params }: {params: {id: string}}) => {
                 topic={post.topic}
                 text={post.text}
                 createdAt={post.createdAt}
+                id={params.id}
+            />
+            <Input 
+                inputType="text" 
+                placeholder="Comment your thoughts" 
+                className="w-full mt-3  px-3"
+                isComment={true}
             />
         </div>
     )

@@ -61,7 +61,7 @@ const LoginForm = () => {
                 <form action={handleSubmit}>
                     <Input
                         inputType="email"
-                        className={`mb-5 ${!isAccurateData ? "border-red-500" : ""}`}
+                        className={`mb-5 rounded-sm p-2 ${!isAccurateData ? "border-red-500" : ""}`}
                         title="Email"
                         name="email"
                         value={loginFormValues.email}
@@ -69,7 +69,7 @@ const LoginForm = () => {
                     />
                     <Input
                         inputType="password"
-                        className={`mb-1 ${!isAccurateData ? "border-red-500" : ""}`}
+                        className={`mb-1 rounded-sm p-2 ${!isAccurateData ? "border-red-500" : ""}`}
                         title="Password"
                         name="password"
                         value={loginFormValues.password}

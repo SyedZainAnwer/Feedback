@@ -15,7 +15,7 @@ import Loader from "@/components/shared/Loader";
 export default function Home() {
 
   const router = useRouter();
-  const [posts, setPosts] = useState<IPost[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -41,8 +41,8 @@ export default function Home() {
         <SearchInput />
       </div>
       <div className="flex md:justify-between justify-end mb-4">
-          <Heading title="Give your feedback" className="hidden md:flex"/>
-          <Button className="block md:hidden bg-light_blue mr-2 text-white" title="Browse Topics"/>
+        <Heading title="Give your feedback" className="hidden md:flex" />
+        <Button className="block md:hidden bg-light_blue mr-2 text-black" title="Browse Topics" />
         <Button
           title="Create Post"
           icon={plusIcon}
@@ -52,18 +52,19 @@ export default function Home() {
       </div>
 
       {isLoading ? (
-        <Loader/>
+        <Loader />
       ) : (
-      <div className="grid md:grid-cols-2 gap-4 mb-5">
-        {posts.map((post, index) => (
-          <Card
-            key={index}
-            topic={post.topic}
-            text={post.text}
-            createdAt={post.createdAt}
-          />
-        ))}
-      </div>
+        <>
+          {posts.map((post, index) => (
+            <Card
+              key={index}
+              topic={post.topic}
+              text={post.text}
+              createdAt={post.createdAt}
+              id={post._id}
+            />
+          ))}
+        </>
       )}
 
     </main>

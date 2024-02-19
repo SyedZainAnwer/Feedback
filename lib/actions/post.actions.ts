@@ -47,7 +47,7 @@ export const fetchPosts = async() => {
         const posts = await Post.find({ parentId: {$in: [null, undefined]} })
         .sort({ createdAt: "desc" });
 
-        return { posts: posts || [] };
+        return { posts: posts };
 
     } catch(error: any) {
         console.log(`Error fetching post: ${error.message}`);

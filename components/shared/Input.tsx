@@ -1,4 +1,7 @@
+import Image from "next/image";
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
+import submitIcon from '@/public/assets/submit.svg'
+import emojiIcon from '@/public/assets/emoji.svg'
 
 interface Props {
     inputType: HTMLInputTypeAttribute;
@@ -9,21 +12,52 @@ interface Props {
     className?: string;
     name?: string;
     title?: string;
+    isComment?: boolean
 }
 
-const Input = ({ inputType, placeholder, value, onChange, dataItems, className, name, title }: Props) => {
+const Input = ({
+    inputType,
+    placeholder,
+    value,
+    onChange,
+    dataItems,
+    className,
+    name,
+    title,
+    isComment
+}: Props) => {
     return (
         <div>
             <p className="mb-1">{title}</p>
-            <input 
-                list={dataItems && 'list'}
-                type={inputType}
-                className={`${className} border border-light_gray p-2 rounded-sm`}
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-                name={name}
-            />
+            <div className={`${isComment ? "border border-light_gray mt-3 rounded-xl" : ""}`}>
+                <input
+                    list={dataItems && 'list'}
+                    type={inputType}
+                    className={`${className} ${isComment ? "border-none outline-none" : "border border-light_gray"} `}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
+                    name={name}
+                />
+                {isComment && (
+                    <div className="flex justify-end px-4 mb-3">
+                        <Image 
+                            src={emojiIcon} 
+                            alt="emojiIcon" 
+                            width={20} 
+                            height={20} 
+                            className="mr-2 cursor-pointer" 
+                        />
+                        <Image 
+                            src={submitIcon} 
+                            alt="submitIcon" 
+                            width={20} 
+                            height={20} 
+                            className="cursor-pointer"
+                        />
+                    </div>
+                )}
+            </div>
             {dataItems && (
                 dataItems.map((item, index) => (
                     <datalist id="list" key={index}>

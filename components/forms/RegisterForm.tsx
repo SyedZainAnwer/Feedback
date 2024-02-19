@@ -73,7 +73,7 @@ const RegisterForm = () => {
                 {/* Email Input Field */}
                 <Input 
                     inputType="email"
-                    className={`${validationErrors.includes("Must be THI email address") ? 
+                    className={`rounded-sm p-2 ${validationErrors.includes("Must be THI email address") ? 
                     "border-red-500 mb-1" : "mb-5"}`}
                     name="email" 
                     value={registerFieldValue.email} 
@@ -90,7 +90,7 @@ const RegisterForm = () => {
                 {/* Password Input Field */}
                 <Input 
                     inputType="password"
-                    className={`${validationErrors.includes("Must be at least 8 characters long") ? 
+                    className={`rounded-sm p-2 ${validationErrors.includes("Must be at least 8 characters long") ? 
                     "border-red-500 mb-1" : "mb-5"}`}
                     name="password"
                     value={registerFieldValue.password} 
@@ -107,7 +107,7 @@ const RegisterForm = () => {
                 {/* Confirm Password Input Field */}
                 <Input 
                     inputType="password"
-                    className={`${validationErrors.includes("Passwords do not match") ? 
+                    className={`rounded-sm p-2 ${validationErrors.includes("Passwords do not match") ? 
                     "border-red-500 mb-1" : ""}`}
                     name="confirmPassword"
                     value={registerFieldValue.confirmPassword || ""} 
