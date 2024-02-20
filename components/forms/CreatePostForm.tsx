@@ -60,7 +60,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                 <form className="mt-4" action={handlePostSubmit}>
                     <Input
                         inputType="text"
-                        className="w-full py-3 mb-2"
+                        className="w-full py-3 mb-2 rounded-sm p-2"
                         dataItems={topics}
                         placeholder="Select a topic or enter one"
                         name="topic"
@@ -69,7 +69,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                     />
                     <Input
                         inputType="text"
-                        className="w-full py-3 mb-2"
+                        className="w-full py-3 mb-2 rounded-sm p-2"
                         placeholder="Enter post title"
                         name="text"
                         value={postValues.text}

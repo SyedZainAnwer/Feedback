@@ -16,7 +16,7 @@ export default function Home() {
 
   const router = useRouter();
   const [posts, setPosts] = useState<any[]>([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +55,10 @@ export default function Home() {
         <Loader />
       ) : (
         <>
-          {posts.map((post, index) => (
+        {posts.length === 0 ? (
+          <p className="flex justify-center items-center mt-5 text-gray">No Post Found</p>
+        ) : (
+          posts.map((post, index) => (
             <Card
               key={index}
               topic={post.topic}
@@ -63,7 +66,8 @@ export default function Home() {
               createdAt={post.createdAt}
               id={post._id}
             />
-          ))}
+          ))
+        )}
         </>
       )}
 
