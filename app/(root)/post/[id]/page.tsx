@@ -7,7 +7,7 @@ import { fetchPostById } from "@/lib/actions/post.actions";
 const Page = async ({ params }: { params: { id: string } }) => {
     if (!params.id) return "No Post Found";
 
-    const post = await fetchPostById(params.id)
+    const post = await fetchPostById(params.id);
 
     return (
         <div className="mb-10">
