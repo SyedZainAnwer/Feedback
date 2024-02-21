@@ -1,7 +1,12 @@
+import { cookies } from "next/headers";
 import Avatar from "./shared/Avatar";
 import SearchInput from "./shared/SearchInput";
+import Button from "./shared/Button";
 
 const Navbar = () => {
+
+    const isAuthenticated = cookies().get('authToken')?.value;
+
     return (
         <nav className="flex items-center p-4 mb-3">
             <h2 className="text-orange font-bold text-3xl flex-shrink-0 md:w-1/4 w-1/2">
@@ -13,7 +18,14 @@ const Navbar = () => {
                 <SearchInput />
             </div>
             <div className="md:w-1/4 w-1/2 flex items-center justify-end">
-                <Avatar />
+                {isAuthenticated ? (
+                    <Avatar />
+                ) :  (
+                    <div className="flex">
+                        <Button title="Login" className="border border-light_gray mr-3"/>
+                        <Button title="Signup" className="bg-light_blue"/>
+                    </div>
+                )}
             </div>
         </nav>
 

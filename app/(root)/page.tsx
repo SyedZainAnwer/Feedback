@@ -5,7 +5,6 @@ import Button from "@/components/shared/Button";
 import Heading from "@/components/shared/Heading";
 import { fetchPosts } from "@/lib/actions/post.actions";
 import plusIcon from '@/public/assets/plus.svg'
-import { IPost } from "@/types/appTypes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import '../globals.css'
@@ -17,7 +16,7 @@ export default function Home() {
   const router = useRouter();
   const [posts, setPosts] = useState<any[]>([]);
   const [isLoading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

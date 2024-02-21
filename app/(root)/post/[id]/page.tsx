@@ -7,7 +7,7 @@ import { fetchPostById } from "@/lib/actions/post.actions";
 const Page = async ({ params }: { params: { id: string } }) => {
     if (!params.id) return "No Post Found";
 
-    const post = await fetchPostById(params.id);
+    const post = await fetchPostById(params.id)
 
     return (
         <div className="mb-10">
@@ -22,7 +22,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <Input
                 inputType="text"
                 placeholder="Comment your thoughts"
-                className="w-full mt-3  px-3"
+                className="w-full mt-3 px-3"
                 isComment={true}
             />
             <div className="flex mt-6">
