@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import Avatar from "./shared/Avatar";
 import SearchInput from "./shared/SearchInput";
 import Button from "./shared/Button";
+import Link from "next/link";
 
 const Navbar = () => {
 
@@ -20,10 +21,14 @@ const Navbar = () => {
             <div className="md:w-1/4 w-1/2 flex items-center justify-end">
                 {isAuthenticated ? (
                     <Avatar />
-                ) :  (
+                ) : (
                     <div className="flex">
-                        <Button title="Login" className="border border-light_gray mr-3"/>
-                        <Button title="Signup" className="bg-light_blue"/>
+                        <Link href="/login">
+                            <Button title="Login" className="border border-light_gray mr-3" />
+                        </Link>
+                        <Link href="/register">
+                            <Button title="Signup" className="bg-light_blue" />
+                        </Link>
                     </div>
                 )}
             </div>
