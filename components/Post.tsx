@@ -6,20 +6,33 @@ import CommentCard from "./shared/CommentCard";
 import HeadingIndicator from "./shared/HeadingIndicator";
 import Input from "./shared/Input";
 import { IPost } from "@/types/appTypes";
+import { addCommentToPost } from "@/lib/actions/post.actions";
+import { PostCommentValidation } from "@/lib/validations/post";
 
 interface Props {
     topic: string;
     text: string;
     createdAt: string;
-    id: string;
+    postId: string;
 }
 
-const Post = ({createdAt, id, text, topic}: Props) => {
+const Post = ({ createdAt, postId, text, topic }: Props) => {
 
-    const [comment, setComment] = useState("");
+    const [postComment, setPostComment] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setComment(e.target.value);
+        setPostComment(e.target.value);
+    }
+
+    const onComment = async() => {
+        PostCommentValidation.parse({postComment});
+        try{
+            const response = await addCommentToPost(postId, postComment);
+            setPostComment("")
+            console.log(response, "comment")
+        } catch(error: any) {
+            console.error(`Cannot post comment: ${error.message}`)
+        }
     }
 
     return(
@@ -28,7 +41,7 @@ const Post = ({createdAt, id, text, topic}: Props) => {
                 topic={topic}
                 text={text}
                 createdAt={createdAt}
-                id={id}
+                id={postId}
                 isCommentPage={true}
             />
             <Input
@@ -38,16 +51,9 @@ const Post = ({createdAt, id, text, topic}: Props) => {
                 isComment={true}
                 onChange={(e) => handleChange(e)}
                 name="comment"
-                value={comment}
+                value={postComment}
+                onCommentSubmit={onComment}
             />
-            <div className="flex mt-6">
-                <HeadingIndicator className='ml-5' />
-                <div className="ml-3">
-                    <h1 className="font-bold text-lg mb-3">Replies</h1>
-                    <CommentCard />
-                    <CommentCard />
-                </div>
-            </div>
         </div>
     )
 }

@@ -12,7 +12,8 @@ interface Props {
     className?: string;
     name?: string;
     title?: string;
-    isComment?: boolean
+    isComment?: boolean;
+    onCommentSubmit?: React.MouseEventHandler<HTMLImageElement>
 }
 
 const Input = ({
@@ -24,7 +25,8 @@ const Input = ({
     className,
     name,
     title,
-    isComment
+    isComment,
+    onCommentSubmit
 }: Props) => {
     return (
         <div>
@@ -54,6 +56,7 @@ const Input = ({
                             width={20} 
                             height={20} 
                             className="cursor-pointer"
+                            onClick={onCommentSubmit}
                         />
                     </div>
                 )}

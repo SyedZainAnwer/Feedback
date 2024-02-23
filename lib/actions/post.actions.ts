@@ -100,3 +100,31 @@ export const fetchTopics = async() => {
         console.log(`Error fetching topics array: ${error.message}`)
     }
 };
+
+export const addCommentToPost = async(postId: string, commentText: string) => {
+    connectToDB();
+    try{
+        const originalPost = await Post.findById(postId);
+        if(!originalPost) {
+            console.error("Cannot find Post");
+        }
+
+        const postComment = new Post({
+            text: commentText,
+            parentId: postId
+        });
+
+        const savedComment = await postComment.save();
+
+        originalPost.children.push(savedComment._id);
+
+        await originalPost.save();
+
+        console.log(postComment, "postComment");
+
+        return postComment;
+
+    } catch(error: any) {
+        console.error(`Error commenting on post: ${error.message}`)
+    }
+}
