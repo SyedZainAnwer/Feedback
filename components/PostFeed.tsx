@@ -49,7 +49,11 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
             </div>
             <div className="flex md:justify-between justify-end mb-4">
                 <Heading title="Give your feedback" className="hidden md:flex" />
-                <Button className="block md:hidden bg-light_blue mr-2 text-black" title="Browse Topics" />
+                <Button 
+                    className="block md:hidden bg-light_blue mr-2 text-black" 
+                    title="Browse Topics" 
+                    onClick={() => router.push("topics")}
+                />
                 {authProfileId && (
                     <Button
                         title="Create Post"

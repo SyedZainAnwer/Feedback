@@ -9,7 +9,6 @@ const Page = async () => {
         <div>
             {topics?.map((topic, i) => (
                 <div key={i} className="flex mt-2">
-                    <HeadingIndicator className="h-5" />
                     <p>{topic}</p>
                 </div>
             ))}
