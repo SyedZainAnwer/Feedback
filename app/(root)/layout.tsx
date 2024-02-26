@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import '../globals.css'
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +17,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const isAuthenticated = cookies().get('authToken')?.value;
+
   return (
     <html lang="en"> 
       <body className={inter.className}>
-        <Navbar />
+        <Navbar isAuthenticated={isAuthenticated}/>
         <main className="flex">
           <section className="w-1/4 lg:block hidden">
             <LeftSideBar />

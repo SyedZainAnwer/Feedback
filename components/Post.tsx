@@ -14,9 +14,10 @@ interface Props {
     text: string;
     createdAt: string;
     postId: string;
+    isAuthenticated?: string
 }
 
-const Post = ({ createdAt, postId, text, topic }: Props) => {
+const Post = ({ createdAt, postId, text, topic, isAuthenticated }: Props) => {
 
     const [postComment, setPostComment] = useState("");
 
@@ -24,18 +25,18 @@ const Post = ({ createdAt, postId, text, topic }: Props) => {
         setPostComment(e.target.value);
     }
 
-    const onComment = async() => {
-        PostCommentValidation.parse({postComment});
-        try{
+    const onComment = async () => {
+        PostCommentValidation.parse({ postComment });
+        try {
             const response = await addCommentToPost(postId, postComment);
             setPostComment("")
             console.log(response, "comment")
-        } catch(error: any) {
+        } catch (error: any) {
             console.error(`Cannot post comment: ${error.message}`)
         }
     }
 
-    return(
+    return (
         <div className="mb-10">
             <Card
                 topic={topic}
@@ -44,16 +45,18 @@ const Post = ({ createdAt, postId, text, topic }: Props) => {
                 id={postId}
                 isCommentPage={true}
             />
-            <Input
-                inputType="text"
-                placeholder="Comment your thoughts"
-                className="w-full mt-3 px-3"
-                isComment={true}
-                onChange={(e) => handleChange(e)}
-                name="comment"
-                value={postComment}
-                onCommentSubmit={onComment}
-            />
+            {isAuthenticated && (
+                <Input
+                    inputType="text"
+                    placeholder="Comment your thoughts"
+                    className="w-full mt-3 px-3"
+                    isComment={true}
+                    onChange={(e) => handleChange(e)}
+                    name="comment"
+                    value={postComment}
+                    onCommentSubmit={onComment}
+                />
+            )}
         </div>
     )
 }

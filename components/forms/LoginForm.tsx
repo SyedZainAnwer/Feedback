@@ -45,7 +45,7 @@ const LoginForm = () => {
             if(response) {
                 Cookies.set("authToken", response.token);
                 Cookies.set("authUserId", response.userId)
-                router.push("/")
+                router.replace("/")
             } else {
                 console.error("Failed to Login: Invalid response")
             }

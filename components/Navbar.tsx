@@ -1,12 +1,21 @@
-import { cookies } from "next/headers";
+"use client"
+
 import Avatar from "./shared/Avatar";
 import SearchInput from "./shared/SearchInput";
 import Button from "./shared/Button";
+import Cookies from "js-cookie";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const Navbar = () => {
+const Navbar = ({isAuthenticated}: {isAuthenticated?: string}) => {
 
-    const isAuthenticated = cookies().get('authToken')?.value;
+    const router = useRouter()
+
+    const handleLogoutClick = () => {
+        Cookies.remove("authToken");
+        Cookies.remove("authUserId");
+        router.replace("login")
+    }
 
     return (
         <nav className="flex items-center p-4 mb-3">
@@ -20,7 +29,7 @@ const Navbar = () => {
             </div>
             <div className="md:w-1/4 w-1/2 flex items-center justify-end">
                 {isAuthenticated ? (
-                    <Avatar />
+                    <Avatar onClick={handleLogoutClick}/>
                 ) : (
                     <div className="flex">
                         <Link href="/login">

@@ -10,9 +10,19 @@ const Page = async ({ params }: { params: { id: string } }) => {
     const isAuthenticated = cookies().get('authToken')?.value;
     const post = await fetchPostById(params.id);
 
+    if(!isAuthenticated) return "Login to find post"
+    
+    if(!post) return "Post not found"
+
     return (
         <div>
-            <Post createdAt={post.createdAt} postId={post.id} text={post.text} topic={post.topic}/>
+            <Post 
+                createdAt={post.createdAt} 
+                postId={post.id} 
+                text={post.text} 
+                topic={post.topic} 
+                isAuthenticated={isAuthenticated} 
+            />
             <div className="flex mt-6">
                 <HeadingIndicator className='ml-5' />
                 <div className="ml-3">
