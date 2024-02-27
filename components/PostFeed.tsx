@@ -83,6 +83,9 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
                     )}
                 </>
             )}
+            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
+            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
+            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
         </div>
     )
 }

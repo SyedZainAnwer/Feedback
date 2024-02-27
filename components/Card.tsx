@@ -27,13 +27,13 @@ const Card = ({ topic, text, createdAt, id, isCommentPage }: Props) => {
     }
 
     return (
-        <div className="border border-light_gray rounded-lg p-6 mb-5">
+        <div className="border-none shadow-lg bg-white rounded-lg p-6 mb-5">
             <div className="flex justify-between">
                 <div className="flex">
                     <HeadingIndicator className="h-5" />
                     <h5 className="text-pink flex text-sm">{topic}</h5>
                 </div>
-                <p>{timeAgo}</p>
+                <p className="text-xs">{timeAgo}</p>
             </div>
             <p className="mt-2 text-xl font-semibold">{text}</p>
             {!isCommentPage && (

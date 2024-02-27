@@ -7,7 +7,7 @@ export default function Home() {
   const authProfileId = cookies().get('authToken')?.value
 
   return (
-    <main>
+    <main className="md:p-5">
       <PostFeed feedType="default" authProfileId={authProfileId}/>
     </main>
   );
