@@ -17,7 +17,7 @@ const PostInteraction = ({ onCommentIconClick, onShareIconClick, numberOfComment
                 alt='commentIcon' 
                 width={23} 
                 height={23} 
-                className='mr-1 cursor-pointer' 
+                className='mr-2 cursor-pointer' 
                 onClick={onCommentIconClick}
             />
             <Image 
@@ -29,8 +29,8 @@ const PostInteraction = ({ onCommentIconClick, onShareIconClick, numberOfComment
                 onClick={onShareIconClick}
             />
         </div>
-        <div className='flex justify-items-end'>
-            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments}</span>
+        <div className='flex flex-col-reverse w-full'>
+            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments} {numberOfComments || 0 > 1 ? "comments" : "comment"}</span>
         </div>
         </div>
     )

@@ -31,7 +31,7 @@ const Input = ({
     return (
         <div>
             <p className="mb-1">{title}</p>
-            <div className={`${isComment ? "border border-light_gray mt-3 rounded-xl" : ""}`}>
+            <div className={`${isComment ? "border border-light_gray mt-3 rounded-xl bg-white" : ""}`}>
                 <input
                     list={dataItems && 'list'}
                     type={inputType}
