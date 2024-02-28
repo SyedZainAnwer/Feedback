@@ -78,14 +78,21 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
                                 text={post.text}
                                 createdAt={post.createdAt}
                                 id={post._id}
+                                numberOfComments={post.children.length}
                             />
                         ))
                     )}
                 </>
             )}
-            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
-            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
-            <Card createdAt="asa" id="122" text="dasda" topic="qewqwe" />
+
+            {/* <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/>
+            <Card createdAt="12" id="dasd" text="sdaasa" topic="adasda"/> */}
         </div>
     )
 }

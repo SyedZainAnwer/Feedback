@@ -22,6 +22,7 @@ const config: Config = {
         purple: '#8A2BE2',
         white: "#ffffff",
         light_gray: '#D9D9D9',
+        off_white: '#fafafa',
         gray: '#818181',
         mid_gray: '#7A7A7A',
         black: '#000000',

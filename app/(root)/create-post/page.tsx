@@ -7,7 +7,7 @@ const Page = () => {
     console.log(authUserId, "authUserId")
 
     return (
-        <div>
+        <div className="shadow-lg md:p-10 md:mt-4 bg-white flex justify-center items-center">
             <CreatePostForm userId={authUserId} />
         </div>
     );

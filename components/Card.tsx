@@ -11,9 +11,10 @@ interface Props {
     createdAt: string;
     id: string;
     isCommentPage?: boolean;
+    numberOfComments?: number
 }
 
-const Card = ({ topic, text, createdAt, id, isCommentPage }: Props) => {
+const Card = ({ topic, text, createdAt, id, isCommentPage, numberOfComments }: Props) => {
 
     const timeAgo = createdAt ? calculateTime(new Date(createdAt)) : '';
     const router = useRouter();
@@ -37,7 +38,7 @@ const Card = ({ topic, text, createdAt, id, isCommentPage }: Props) => {
             </div>
             <p className="mt-2 text-xl font-semibold">{text}</p>
             {!isCommentPage && (
-                <PostInteraction onCommentIconClick={onCommentIconClick} onShareIconClick={onShareIconClick} />
+                <PostInteraction numberOfComments={numberOfComments} onCommentIconClick={onCommentIconClick} onShareIconClick={onShareIconClick} />
             )}
         </div>
     );

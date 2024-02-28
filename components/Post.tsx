@@ -49,7 +49,7 @@ const Post = ({ createdAt, postId, text, topic, isAuthenticated }: Props) => {
                 <Input
                     inputType="text"
                     placeholder="Comment your thoughts"
-                    className="w-full mt-3 px-3"
+                    className="w-full mt-3 px-3 bg-off_white"
                     isComment={true}
                     onChange={(e) => handleChange(e)}
                     name="comment"

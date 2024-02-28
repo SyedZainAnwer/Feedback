@@ -5,17 +5,19 @@ import Image from 'next/image';
 interface Props {
     onCommentIconClick: React.MouseEventHandler<HTMLImageElement>;
     onShareIconClick: React.MouseEventHandler<HTMLImageElement>;
+    numberOfComments?: number
 }
 
-const PostInteraction = ({ onCommentIconClick, onShareIconClick }: Props) => {
+const PostInteraction = ({ onCommentIconClick, onShareIconClick, numberOfComments }: Props) => {
     return (
-        <div className='flex mt-3'>
+        <div className='flex'>
+        <div className='flex mt-3 justify-items-start'>
             <Image 
                 src={commentIcon} 
                 alt='commentIcon' 
                 width={23} 
                 height={23} 
-                className='mr-2 cursor-pointer' 
+                className='mr-1 cursor-pointer' 
                 onClick={onCommentIconClick}
             />
             <Image 
@@ -26,6 +28,10 @@ const PostInteraction = ({ onCommentIconClick, onShareIconClick }: Props) => {
                 height={15}
                 onClick={onShareIconClick}
             />
+        </div>
+        <div className='flex justify-items-end'>
+            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments}</span>
+        </div>
         </div>
     )
 }

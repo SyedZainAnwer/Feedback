@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar isAuthenticated={isAuthenticated}/>
         <main className="flex">
-          <section className="md:w-1/5 lg:block hidden shadow-lg bg-white p-3 ">
+          <section className="md:w-1/5 lg:block hidden shadow-lg bg-white p-3">
             <LeftSideBar />
           </section>
           <section className="lg:w-3/5 w-full px-4">

@@ -15,7 +15,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     if(!post) return "Post not found"
 
     return (
-        <div>
+        <div className="md:my-10 md:ml-10">
             <Post 
                 createdAt={post.createdAt} 
                 postId={post.id} 
@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 isAuthenticated={isAuthenticated} 
             />
             <div className="flex mt-6">
-                <HeadingIndicator className='ml-5' />
+                <HeadingIndicator className='ml-7' />
                 <div className="ml-3">
                     <h1 className="font-bold text-lg mb-3">Replies</h1>
                     {post.children.map((comment: any) => (

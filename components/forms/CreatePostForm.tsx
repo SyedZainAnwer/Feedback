@@ -55,8 +55,8 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
     }
 
     return (
-        <main className="">
-            <Heading title="Post Feedback" />
+        <main className="w-full">
+            <Heading title="Post Feedback" className="flex justify-center items-center"/>
                 <form className="mt-4" action={handlePostSubmit}>
                     <Input
                         inputType="text"
