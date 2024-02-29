@@ -23,6 +23,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 topic={post.topic} 
                 isAuthenticated={isAuthenticated} 
             />
+            {post.children.length !== 0 && (
             <div className="flex mt-6">
                 <HeadingIndicator className='ml-7' />
                 <div className="ml-3">
@@ -32,6 +33,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                     ))}
                 </div>
             </div>
+            )}
         </div>
     )
 }

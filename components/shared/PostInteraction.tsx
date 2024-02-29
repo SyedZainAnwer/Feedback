@@ -30,7 +30,7 @@ const PostInteraction = ({ onCommentIconClick, onShareIconClick, numberOfComment
             />
         </div>
         <div className='flex flex-col-reverse w-full'>
-            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments} {numberOfComments || 0 > 1 ? "comments" : "comment"}</span>
+            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments} {numberOfComments === 1 || numberOfComments === 0 ? "comment" : "comments"}</span>
         </div>
         </div>
     )
