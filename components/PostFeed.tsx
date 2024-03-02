@@ -10,7 +10,8 @@ import Card from "./Card";
 import Button from "./shared/Button";
 import Heading from "./shared/Heading";
 import Loader from "./shared/Loader";
-import plusIcon from '@/public/assets/plus.svg'
+import plusIcon from '@/public/assets/plus.svg';
+// import { useRouter as Router } from "next/router";
 
 interface Props {
     feedType: string;
@@ -20,6 +21,7 @@ interface Props {
 const PostFeed = ({ feedType, authProfileId }: Props) => {
 
     const router = useRouter();
+    // const share = Router()
     const [posts, setPosts] = useState<any[]>([]);
     const [isLoading, setLoading] = useState(true);
 
@@ -41,6 +43,14 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
 
         fetchData(feedType);
     }, []);
+
+    const onShareIconClick = () => {
+        // const postLink = process.env.BASE_URL + share.asPath;
+
+        // navigator.clipboard.writeText(postLink);
+
+        // console.log("post copied")
+    }
 
     return (
         <div>
@@ -74,6 +84,7 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
                         posts.map((post, index) => (
                             <Card
                                 key={index}
+                                onShareIconClick={onShareIconClick}
                                 topic={post.topic}
                                 text={post.text}
                                 createdAt={post.createdAt}
