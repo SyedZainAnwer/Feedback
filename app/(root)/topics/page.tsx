@@ -4,21 +4,28 @@ import { fetchTopics } from "@/lib/actions/post.actions";
 
 const Page = async () => {
 
-    const topics = await fetchTopics()
+    const topics = await fetchTopics();
+    console.log(topics)
+    // console.log(topics?.posts, "topics posts")
 
     return (
-        <div className="shadow-lg bg-white p-5 rounded-lg md:mt-3">
-            <h1 className="text-lg text-black mb-5 font-bold bg-light_gray p-2">Browse Topics</h1>
+        <div className="shadow-lg bg-white rounded-lg md:mt-3 overflow-hidden">
+            <h1 className="text-lg text-black mb-2 font-bold bg-light_gray p-2">Browse Topics</h1>
 
-            <SearchInput />
+            <div className="p-5">
+                <SearchInput />
 
-            <div className="mt-5">
-            {topics?.map((topic, i) => (
-                <div key={i} className="flex mt-2">
-                    <p className="text-sm">{topic}</p>
+                <div className="mt-5">
+                    {topics?.map((topic, i) => (
+                        <div key={i} className="flex mt-2">
+                            <p className="text-sm">{topic.name}</p>
+                            <p>{topic.posts?.length}</p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+
             </div>
+
         </div>
     )
 }
