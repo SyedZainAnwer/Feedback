@@ -21,14 +21,14 @@ export const createPost = async({ text, topic, authorId }: IPost) => {
             author: authorId,
             topic: existingTopic.name,
         });
-        const postId = JSON.stringify(createdPost._id)
+        // const postId = JSON.stringify(createdPost._id)
 
         await User.findByIdAndUpdate(authorId, {
-            $push: { posts: postId }
+            $push: { posts: createdPost._id }
         });
 
         await Topic.findByIdAndUpdate(existingTopic._id, {
-            $push: { posts: postId }
+            $push: { posts: createdPost._id }
         })
 
         console.log(createdPost, "createdPost")

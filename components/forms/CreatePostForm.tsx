@@ -20,14 +20,17 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
     });
 
     useEffect(() => {
-        const topics = async() => {
-            const res = await fetchTopics();
-            setTopics(res)
+        const fetchTopicsData = async () => {
+            const topicsData = await fetchTopics();
+            if (topicsData) {
+                const topicNames = topicsData.map(topic => topic.name);
+                setTopics(topicNames);
+            }
         };
-
-        topics()
-    }, [])
-
+    
+        fetchTopicsData();
+    }, []);
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setPostValues((prev) => ({

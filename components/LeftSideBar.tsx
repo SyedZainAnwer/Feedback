@@ -13,7 +13,7 @@ const LeftSideBar = async () => {
       {topics?.map((topic, i) => (
         <div key={i} className="flex mt-2">
           <HeadingIndicator className="h-5" />
-          <p>{topic}</p>
+          <p>{topic.name}</p>
         </div>
       ))}
     </div>
