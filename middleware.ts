@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const protectedRoutes = ["/create-post"]
+const protectedRoutes = ["/create-post", "/topics"]
 
 export function middleware(request: NextRequest) {
     const isLogin = request.cookies.get("authToken")
