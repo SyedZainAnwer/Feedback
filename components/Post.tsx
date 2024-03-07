@@ -44,6 +44,7 @@ const Post = ({ createdAt, postId, text, topic, isAuthenticated }: Props) => {
                 createdAt={createdAt}
                 id={postId}
                 isCommentPage={true}
+                onShareIconClick={() => console.log("Hello World!")}
             />
             {isAuthenticated && (
                 <Input

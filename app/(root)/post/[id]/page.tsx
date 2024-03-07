@@ -1,3 +1,4 @@
+import LeftSideBar from "@/components/LeftSideBar";
 import Post from "@/components/Post";
 import CommentCard from "@/components/shared/CommentCard";
 import HeadingIndicator from "@/components/shared/HeadingIndicator";
@@ -15,7 +16,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
     if(!post) return "Post not found"
 
     return (
-        <div className="md:my-10 md:ml-10">
+        <div className="flex overflow-hidden">
+            <section className="md:w-1/5 lg:block hidden shadow-lg bg-white p-3 h-screen">
+                <LeftSideBar />
+            </section>
+
+            <section className="md:my-10 md:ml-10 md:w-1/2 px-4">
             <Post 
                 createdAt={post.createdAt} 
                 postId={post.id} 
@@ -34,6 +40,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 </div>
             </div>
             )}
+            </section>
         </div>
     )
 }
