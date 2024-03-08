@@ -1,5 +1,6 @@
 import LeftSideBar from "@/components/LeftSideBar";
 import Post from "@/components/Post";
+import SinglePost from "@/components/SinglePost";
 import CommentCard from "@/components/shared/CommentCard";
 import HeadingIndicator from "@/components/shared/HeadingIndicator";
 import { fetchPostById } from "@/lib/actions/post.actions";
@@ -12,11 +13,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
     const post = await fetchPostById(params.id);
 
     if(!isAuthenticated) return "Login to find post"
-    
+
     if(!post) return "Post not found"
 
     return (
         <div className="flex overflow-hidden">
+            {/* <SinglePost id={params.id} isAuthenticated={isAuthenticated} /> */}
             <section className="md:w-1/5 lg:block hidden shadow-lg bg-white p-3 h-screen">
                 <LeftSideBar />
             </section>

@@ -16,7 +16,7 @@ interface Props {
 
 const SinglePost = ({ id, isAuthenticated }: Props) => {
 
-    const [singlePost, setSinglePost] = useState()
+    const [singlePost, setSinglePost] = useState<>()
 
     useEffect(() => {
         const fetchSinglePost = async() => {
@@ -35,7 +35,7 @@ const SinglePost = ({ id, isAuthenticated }: Props) => {
 
             <section className="md:my-10 md:ml-10 md:w-1/2 px-4">
             <Post 
-                createdAt={singlePost?.createdAt} 
+                createdAt={singlePost.createdAt} 
                 postId={id} 
                 text={singlePost?.text} 
                 topic={singlePost?.topic} 
