@@ -18,8 +18,8 @@ const Navbar = ({isAuthenticated}: {isAuthenticated?: string}) => {
     }
 
     return (
-        <nav className="flex items-center p-4 mb-3 md:mb-0 md:bg-white md:shadow-lg">
-            <h2 className="text-orange font-bold text-3xl flex-shrink-0 md:w-1/4 w-1/2">
+        <nav className="flex items-center  mb-3 md:mb-0 md:bg-white md:shadow md:border-[1px] md:border-light_gray border-t-0">
+            <h2 className="text-orange font-bold text-3xl flex-shrink-0 md:w-1/4 w-1/2 md:ml-2 px-3">
                 <a href="/">
                     Feedback
                 </a>
@@ -33,7 +33,7 @@ const Navbar = ({isAuthenticated}: {isAuthenticated?: string}) => {
                 ) : (
                     <div className="flex">
                         <Link href="/login">
-                            <Button title="Login" className="border border-light_gray mr-3" />
+                            <Button title="Login" className=" border-light_gray mr-3" />
                         </Link>
                         <Link href="/register">
                             <Button title="Signup" className="bg-light_blue" />

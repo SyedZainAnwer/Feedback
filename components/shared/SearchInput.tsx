@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const SearchInput = () => {
     return(
-        <div className='bg-white flex flex-1 items-center p-3 border border-light_gray rounded-md'>
+        <div className='bg-white flex flex-1 items-center p-2 border border-light_gray rounded-md'>
             <Image 
                 src={searchIcon} 
                 alt='searchIcon' 

@@ -1,11 +1,14 @@
-import LeftSideBar from "@/components/LeftSideBar";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import '../globals.css'
 import { cookies } from "next/headers";
 
-const inter = Inter({ subsets: ["latin"] });
+const mont = Montserrat({ 
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+  variable: '--font-montserrat'
+})
 
 export const metadata: Metadata = {
   title: "Feedback",
@@ -22,7 +25,7 @@ export default function RootLayout({
 
   return (
     <html lang="en"> 
-      <body className={inter.className}>
+      <body className={`${mont.variable}`}>
         <Navbar isAuthenticated={isAuthenticated}/>         
           <main className="w-full">
             {children}

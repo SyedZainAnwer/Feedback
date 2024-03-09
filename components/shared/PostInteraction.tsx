@@ -1,5 +1,5 @@
-import commentIcon from '@/public/assets/chat.png';
-import shareIcon from '@/public/assets/send.png';
+import commentIcon from '@/public/assets/comment.svg';
+import shareIcon from '@/public/assets/share.svg';
 import Image from 'next/image';
 
 interface Props {
@@ -11,27 +11,30 @@ interface Props {
 const PostInteraction = ({ onCommentIconClick, onShareIconClick, numberOfComments }: Props) => {
     return (
         <div className='flex'>
-        <div className='flex mt-3 justify-items-start'>
-            <Image 
-                src={commentIcon} 
-                alt='commentIcon' 
-                width={23} 
-                height={23} 
-                className='mr-2 cursor-pointer' 
-                onClick={onCommentIconClick}
-            />
-            <Image 
-                src={shareIcon} 
-                alt='shareIcon'
-                className='cursor-pointer'
-                width={20} 
-                height={15}
-                onClick={onShareIconClick}
-            />
-        </div>
-        <div className='flex flex-col-reverse w-full'>
-            <span className='mr-2 text-xs flex font-semibold items-center justify-end'>{numberOfComments} {numberOfComments === 1 || numberOfComments === 0 ? "comment" : "comments"}</span>
-        </div>
+            <div className='flex justify-items-start mt-4'>
+                <div className='bg-light_gray px-4 rounded-3xl cursor-pointer mr-2 flex' onClick={onCommentIconClick}>
+                    <Image
+                        src={commentIcon}
+                        alt='commentIcon'
+                        width={15}
+                        height={15}
+                        className='mt-[3px] flex items-center justify-center mr-2'
+                        
+                    />
+                    <p className='text-mid_gray text-sm flex items-center'>{numberOfComments}</p>
+                </div>
+                <div className='bg-light_gray pr-3 pl-2 py-2 rounded-3xl flex'>
+                    <Image
+                        src={shareIcon}
+                        alt='shareIcon'
+                        className='cursor-pointer'
+                        width={20}
+                        height={15}
+                        onClick={onShareIconClick}
+                    />
+                    <p className='text-mid_gray text-sm ml-1 flex items-center'>Share</p>
+                </div>
+            </div>
         </div>
     )
 }

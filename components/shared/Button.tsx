@@ -36,7 +36,7 @@ const Button = ({ title, icon, className, onClick }: Props) => {
                     className={`${icon ? 'ml-1' : ''} flex justify-center w-full`}
                     onClick={onClick}
                 >
-                    {title}
+                    <p className='font-montserrat text-sm'>{title}</p>
                 </button>
             </>
             )}

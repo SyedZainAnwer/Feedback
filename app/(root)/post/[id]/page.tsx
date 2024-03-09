@@ -11,9 +11,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
     const isAuthenticated = cookies().get('authToken')?.value;
     const post = await fetchPostById(params.id);
 
-    if(!isAuthenticated) return "Login to find post"
+    if (!isAuthenticated) return "Login to find post"
 
-    if(!post) return "Post not found"
+    if (!post) return "Post not found"
 
     return (
         <div className="flex overflow-hidden">
@@ -22,24 +22,26 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </section>
 
             <section className="md:my-10 md:ml-10 md:w-1/2 px-4">
-            <Post 
-                createdAt={post.createdAt} 
-                postId={post.id} 
-                text={post.text} 
-                topic={post.topic} 
-                isAuthenticated={isAuthenticated} 
-            />
-            {post.children.length !== 0 && (
-            <div className="flex mt-6">
-                <HeadingIndicator className='ml-7' />
-                <div className="ml-3">
-                    <h1 className="font-bold text-lg mb-3">Replies</h1>
-                    {post.children.map((comment: any) => (
-                        <CommentCard text={comment.text} key={comment._id}/>
-                    ))}
-                </div>
-            </div>
-            )}
+                <Post
+                    createdAt={post.createdAt}
+                    postId={post.id}
+                    text={post.text}
+                    topic={post.topic}
+                    isAuthenticated={isAuthenticated}
+                />
+                {post.children.length !== 0 && (
+                    <>
+                        <h1 className="font-bold text-lg mb-1 px-4">Replies</h1>
+                        <div className="flex mt-6">
+                            <HeadingIndicator className='ml-7' />
+                            <div className="ml-3 mt-3">
+                                {post.children.map((comment: any) => (
+                                    <CommentCard text={comment.text} key={comment._id} />
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
             </section>
         </div>
     )

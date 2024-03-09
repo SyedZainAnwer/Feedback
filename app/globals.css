@@ -55,7 +55,7 @@
 }
 
 body {
-  background-color: #fafafa;
+  background-color: rgb(249, 249, 251);
 }
 
 
@@ -64,3 +64,4 @@ body {
     background: linear-gradient(to bottom, rgba(255, 181, 61, 1) 0%, rgba(255, 67, 170, 1) 100%);
   }
 }
+

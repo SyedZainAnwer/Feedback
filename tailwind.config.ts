@@ -21,12 +21,16 @@ const config: Config = {
         yellow: '#FFF700',
         purple: '#8A2BE2',
         white: "#ffffff",
-        light_gray: '#D9D9D9',
+        light_gray: '#E9EBEE',
         off_white: '#fafafa',
         gray: '#818181',
         mid_gray: '#7A7A7A',
         black: '#000000',
       },
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)'],
+        inria_sans: ['var(--font-kanit)']
+      }
     },
   },
   plugins: [],

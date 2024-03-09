@@ -71,7 +71,7 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                         <Image src={backIcon} alt="backIcon" height={25} width={21} />
                     </Link>
                 </div>
-                <Heading title="Post Feedback" className="text-lg text-black font-semibold ml-2" />
+                <Heading title="Post Feedback" className="text-lg text-black ml-2" />
             </div>
             <form className="mt-4 p-5" action={handlePostSubmit}>
                 <Input

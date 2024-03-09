@@ -1,25 +1,7 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="50.000000pt" height="50.000000pt" viewBox="0 0 50.000000 50.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M167 456 c-84 -31 -147 -111 -147 -186 0 -43 34 -114 68 -140 25 -20
-25 -21 9 -56 -9 -19 -17 -37 -17 -41 0 -10 63 7 89 24 16 10 48 16 86 17 44 1
-74 8 110 27 144 74 150 253 10 335 -56 32 -150 42 -208 20z m158 -17 c54 -15
-121 -83 130 -132 12 -62 -3 -107 -49 -153 -46 -47 -99 -66 -174 -63 -33 1 -58
--5 -84 -21 -42 -24 -44 -23 -27 14 11 23 8 30 -29 70 -68 73 -69 158 -4 228
-58 61 145 82 237 57z"/>
-<path d="M130 330 c0 -6 47 -10 120 -10 73 0 120 4 120 10 0 6 -47 10 -120 10
--73 0 -120 -4 -120 -10z"/>
-<path d="M90 270 c0 -6 38 -10 95 -10 57 0 95 4 95 10 0 6 -38 10 -95 10 -57
-0 -95 -4 -95 -10z"/>
-<path d="M320 270 c0 -5 20 -10 45 -10 25 0 45 5 45 10 0 6 -20 10 -45 10 -25
-0 -45 -4 -45 -10z"/>
-<path d="M130 210 c0 -6 47 -10 120 -10 73 0 120 4 120 10 0 6 -47 10 -120 10
--73 0 -120 -4 -120 -10z"/>
-</g>
-</svg>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <title>comment-5</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-360.000000, -255.000000)" fill="#009DFF"> <path d="M390,277 C390,278.463 388.473,280 387,280 L379,280 L376,284 L373,280 L365,280 C363.527,280 362,278.463 362,277 L362,260 C362,258.537 363.527,257 365,257 L387,257 C388.473,257 390,258.537 390,260 L390,277 L390,277 Z M386.667,255 L365.333,255 C362.388,255 360,257.371 360,260.297 L360,277.187 C360,280.111 362.055,282 365,282 L371.639,282 L376,287.001 L380.361,282 L387,282 C389.945,282 392,280.111 392,277.187 L392,260.297 C392,257.371 389.612,255 386.667,255 L386.667,255 Z" id="comment-5" sketch:type="MSShapeGroup"> </path> </g> </g> </g>
+</svg>

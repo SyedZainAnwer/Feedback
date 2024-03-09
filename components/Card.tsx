@@ -35,15 +35,15 @@ const Card = ({ topic, text, createdAt, id, isCommentPage, numberOfComments, onS
     // }
 
     return (
-        <div className="border-none shadow-lg bg-white rounded-lg p-6 mb-5">
+        <div className="border-[1px] border-light_gray bg-white rounded-xl p-6 mb-5">
             <div className="flex justify-between">
                 <div className="flex">
                     <HeadingIndicator className="h-5" />
-                    <h5 className="text-pink flex text-sm">{topic}</h5>
+                    <p className="text-pink flex text-sm font-montserrat">{topic}</p>
                 </div>
-                <p className="text-xs">{timeAgo}</p>
+                <p className="text-xs font-montserrat">{timeAgo}</p>
             </div>
-            <p className="mt-2 text-xl font-semibold">{text}</p>
+            <p className="mt-2 text-xl font-medium font-montserrat">{text}</p>
             {!isCommentPage && (
                 <PostInteraction 
                     numberOfComments={numberOfComments} 
