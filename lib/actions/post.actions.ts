@@ -93,16 +93,17 @@ export const fetchTopics = async() => {
         connectToDB();
         const dataItems = await Topic.find().populate('posts');  
 
-        const topicName = dataItems.map(topic => {
+        const topicNames = dataItems.map(topic => {
             return{
-                name:topic.name,
+                name: topic.name,
                 posts: topic.posts
             }
         });
 
-        return topicName
+        return topicNames;
     } catch(error: any) {
-        console.log(`Error fetching topics array: ${error.message}`)
+        console.log(`Error fetching topics array: ${error.message}`);
+        throw error;
     }
 };
 

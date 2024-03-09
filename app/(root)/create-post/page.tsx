@@ -1,3 +1,5 @@
+"use server"
+
 import CreatePostForm from "@/components/forms/CreatePostForm";
 import { cookies } from "next/headers";
 

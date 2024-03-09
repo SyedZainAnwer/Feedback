@@ -23,15 +23,19 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
     });
 
     useEffect(() => {
-        const fetchTopicsData = async () => {
-            const topicsData = await fetchTopics();
-            if (topicsData) {
-                const topicNames = topicsData.map(topic => topic.name);
-                setTopics(topicNames);
-            }
-        };
+        try {
+            const fetchTopicsData = async () => {
+                const topicsData = await fetchTopics();
+                if (topicsData) {
+                    const topicNames = topicsData.map(topic => topic.name);
+                    setTopics(topicNames);
+                }
+                fetchTopicsData();
+            };
+        } catch(error: any) {
+            console.error(`Error fetching topics: ${error.message}`)
+        }
 
-        fetchTopicsData();
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
