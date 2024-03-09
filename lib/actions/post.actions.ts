@@ -31,8 +31,6 @@ export const createPost = async({ text, topic, authorId }: IPost) => {
             $push: { posts: createdPost._id }
         })
 
-        console.log(createdPost, "createdPost")
-
         return createdPost;
 
     } catch(error: any) {
@@ -125,8 +123,6 @@ export const addCommentToPost = async(postId: string, commentText: string) => {
         originalPost.children.push(savedComment._id);
 
         await originalPost.save();
-
-        console.log(postComment, "postComment");
 
         return postComment;
 

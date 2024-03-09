@@ -17,15 +17,6 @@ const Avatar = ({ size = 80, className, onClick }: Props) => {
         setIsModalOpen(!isModalOpen);
     };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleLogoutClick = () => {
-        console.log("Logout clicked");
-        closeModal();
-    };
-
     return (
         <div className="relative">
             <div

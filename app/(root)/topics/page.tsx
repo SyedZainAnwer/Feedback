@@ -7,8 +7,6 @@ import Link from "next/link";
 const Page = async () => {
 
     const topics = await fetchTopics();
-    console.log(topics)
-    // console.log(topics?.posts, "topics posts")
 
     return (
         <div className="md:flex md:justify-center md:items-center">

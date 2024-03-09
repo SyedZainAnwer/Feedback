@@ -30,7 +30,6 @@ const Post = ({ createdAt, postId, text, topic, isAuthenticated }: Props) => {
         try {
             const response = await addCommentToPost(postId, postComment);
             setPostComment("")
-            console.log(response, "comment")
         } catch (error: any) {
             console.error(`Cannot post comment: ${error.message}`)
         }

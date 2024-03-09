@@ -56,7 +56,6 @@ const CreatePostForm = ({ userId }: { userId: string }) => {
                 authorId: postValues.authorId
             })
 
-            console.log(response, "create post response")
             router.push("/");
 
         } catch (error: any) {
