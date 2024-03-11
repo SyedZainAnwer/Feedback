@@ -43,7 +43,7 @@ const Card = ({ topic, text, createdAt, id, isCommentPage, numberOfComments, onS
                 </div>
                 <p className="text-xs font-montserrat">{timeAgo}</p>
             </div>
-            <p className="mt-2 text-xl font-medium font-montserrat">{text}</p>
+            <p className="mt-2 text-xl font-medium font-montserrat cursor-pointer" onClick={onCommentIconClick}>{text}</p>
             {!isCommentPage && (
                 <PostInteraction 
                     numberOfComments={numberOfComments} 

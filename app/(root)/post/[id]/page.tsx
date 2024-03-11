@@ -17,7 +17,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
     return (
         <div className="flex overflow-hidden">
-            <section className="md:w-1/5 lg:block hidden shadow-lg bg-white p-3 h-screen">
+            <section className="md:w-1/5 lg:block hidden md:mt-4 p-3 h-screen">
                 <LeftSideBar />
             </section>
 
