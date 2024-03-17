@@ -55,7 +55,7 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
     return (
         <div>
             <div className="md:hidden block mb-5">
-                <SearchInput />
+                <SearchInput dataItems={posts}/>
             </div>
             <div className="flex md:justify-between justify-end mb-4">
                 <Heading title="Give your feedback" className="hidden md:flex" />
