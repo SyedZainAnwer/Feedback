@@ -89,7 +89,7 @@ export const fetchPostById = async(postId: string) => {
 export const fetchTopics = async() => {
     try{
         connectToDB();
-        const dataItems = await Topic.find().populate('posts');  
+        const dataItems = await Topic.find();  
 
         const topicNames = dataItems.map(topic => {
             return{

@@ -24,7 +24,7 @@ const Page = async () => {
                 </div>
 
                 <div className="p-5">
-                    <SearchInput />
+                    <SearchInput dataItems={topics.map((topic) => topic.name)}/>
 
                     <div className="mt-5">
                         <div className="flex w-full">

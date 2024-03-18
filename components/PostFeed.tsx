@@ -21,7 +21,6 @@ interface Props {
 const PostFeed = ({ feedType, authProfileId }: Props) => {
 
     const router = useRouter();
-    // const share = Router()
     const [posts, setPosts] = useState<any[]>([]);
     const [isLoading, setLoading] = useState(true);
 
@@ -42,7 +41,7 @@ const PostFeed = ({ feedType, authProfileId }: Props) => {
         }
 
         fetchData(feedType);
-    }, []);
+    }, [feedType]);
 
     const onShareIconClick = () => {
         // const postLink = process.env.BASE_URL + share.asPath;

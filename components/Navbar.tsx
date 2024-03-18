@@ -20,19 +20,19 @@ const Navbar = ({isAuthenticated}: {isAuthenticated?: string}) => {
     });
     const router = useRouter();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const posts: string[] = await fetchPosts();
-                const topics: string[] = await fetchTopics();
-                setData({ posts, topics });
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const posts: string[] = await fetchPosts();
+    //             const topics: string[] = await fetchTopics();
+    //             setData({ posts, topics });
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     };
 
-        fetchData();
-    }, [data]);
+    //     fetchData();
+    // }, [data]);
     
 
     const handleLogoutClick = () => {
